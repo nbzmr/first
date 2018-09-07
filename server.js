@@ -17,7 +17,7 @@ hbs.registerHelper('getUpperCase', (text) => {
     return text.toUpperCase()
 })
 
-// middleware
+// middlewares
 
 app.use((req, res, next) => {
     const time = new Date().toString()
