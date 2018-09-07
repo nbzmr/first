@@ -31,8 +31,6 @@ app.use((req, res, next) => {
 
 // all routes
 
-// another comment
-
 app.get('/', (req, res) => {
     res.render('home.hbs', {
         title: 'home page',
