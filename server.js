@@ -1,13 +1,28 @@
 const express = require('express')
 const hbs = require('hbs')
 const fs = require('fs')
+const fetch = require('node-fetch')
 
 const app = express()
 const port = process.env.PORT || 3000
 
 // api routes
 
-
+app.get('/puzzle', (req, res) => {
+    fetch('http://puzzle.mead.io/puzzle')
+    .then((res) => {
+        return res.json()
+    })
+    .then((puzzle) => {
+        console.log(puzzle.puzzle)
+        res.send({
+            puzzle: puzzle.puzzle + ' (from own server)'
+        })
+    })
+    .catch((error) => {
+        console.log(error)
+    })  
+})
 
 // partials and helpers
 
