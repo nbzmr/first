@@ -3,6 +3,7 @@ const hbs = require('hbs')
 const fs = require('fs')
 
 const app = express()
+const port = process.env.PORT || 3000
 
 // partials and helpers
 
@@ -56,7 +57,7 @@ app.get('*', function(req, res){
     res.send('what???', 404);
 });
 
-app.listen(3000, () => {
-    console.log('server is up on port 3000' )
+app.listen(port, () => {
+    console.log(`server is up on port ${port}`)
 })
 
