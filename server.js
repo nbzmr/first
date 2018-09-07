@@ -1,7 +1,6 @@
 const express = require('express')
 const hbs = require('hbs')
 const fs = require('fs')
-const axios = require('axios')
 const fetch = require('node-fetch')
 
 const app = express()
