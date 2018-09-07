@@ -1,9 +1,30 @@
 const express = require('express')
 const hbs = require('hbs')
 const fs = require('fs')
+const axios = require('axios')
+const fetch = require('node-fetch')
 
 const app = express()
 const port = process.env.PORT || 3000
+
+// api routes
+
+app.get('/puzzle', (req, res) => {
+    fetch('http://puzzle.mead.io/puzzle')
+    .then((res) => {
+        return res.json()
+    })
+    .then((puzzle) => {
+        console.log(puzzle.puzzle)
+        res.send({
+            puzzle: puzzle.puzzle + ' (from own server)'
+        })
+    })
+    .catch((error) => {
+        console.log(error)
+    })  
+})
+
 
 // partials and helpers
 
@@ -17,7 +38,7 @@ hbs.registerHelper('getUpperCase', (text) => {
     return text.toUpperCase()
 })
 
-// middlewares
+// middleware
 
 app.use((req, res, next) => {
     const time = new Date().toString()
@@ -55,9 +76,8 @@ app.use(express.static(__dirname + '/public'))
 
 app.get('*', function(req, res){
     res.send('what???', 404);
-});
+})
 
 app.listen(port, () => {
     console.log(`server is up on port ${port}`)
 })
-
