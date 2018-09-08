@@ -74,6 +74,13 @@ app.get('/error', (req, res) => {
     })
 })
 
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        title: 'projects page',
+        pageDescription: 'list of projects'
+    })
+})
+
 app.use(express.static(__dirname + '/public'))
 
 app.get('*', function(req, res){
