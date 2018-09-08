@@ -6,6 +6,10 @@ const fetch = require('node-fetch')
 const app = express()
 const port = process.env.PORT || 3000
 
+app.listen(port, () => {
+    console.log(`server is up on port ${port}`)
+})
+
 // api routes
 
 app.get('/puzzle', (req, res) => {
@@ -79,3 +83,4 @@ app.get('*', function(req, res){
 app.listen(port, () => {
     console.log(`server is up on port ${port}`)
 })
+
