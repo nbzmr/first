@@ -80,7 +80,3 @@ app.get('*', function(req, res){
     res.send('what???', 404);
 })
 
-app.listen(port, () => {
-    console.log(`server is up on port ${port}`)
-})
-
